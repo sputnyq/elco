@@ -255,6 +255,7 @@
       function increment(id) {
         counts[id]++;
         document.getElementById(`count-${id}`).textContent = counts[id];
+        navigator.vibrate && navigator.vibrate(20);
         saveCounts();
       }
 
