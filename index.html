@@ -12,7 +12,8 @@
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
         background: rgb(233, 227, 214);
         min-height: 100vh;
         padding: 20px;
@@ -199,15 +200,29 @@
     <div class="container">
       <div class="counter-grid" id="counterGrid"></div>
 
-      <button class="reset-all-btn" onclick="resetAll()">Alle zurücksetzen</button>
+      <button class="reset-all-btn" onclick="resetAll()">
+        Alle zurücksetzen
+      </button>
     </div>
 
     <script>
       const items = [
-        { id: "lichtschalter-1", label: "Lichtschalter Einfach", image: "pics/schlater-einfach.jpg" },
-        { id: "lichtschalter-2", label: "Lichtschalter 2-Fach", image: "pics/schalter zweifach.jpg" },
+        {
+          id: "lichtschalter-1",
+          label: "Lichtschalter Einfach",
+          image: "pics/schlater-einfach.jpg",
+        },
+        {
+          id: "lichtschalter-2",
+          label: "Lichtschalter 2-Fach",
+          image: "pics/schalter zweifach.jpg",
+        },
         { id: "steckdose", label: "Steckdose", image: "pics/steckdose.jpg" },
-        { id: "tv-abdeckung", label: "TV-Abdeckung", image: "pics/tv sctekdose.jpg" },
+        {
+          id: "tv-abdeckung",
+          label: "TV-Abdeckung",
+          image: "pics/tv sctekdose.jpg",
+        },
         { id: "rahmen-1", label: "Rahmen Einfach", image: "pics/einfach.jpg" },
         { id: "rahmen-2", label: "Rahmen 2-Fach", image: "pics/zweifach.jpg" },
         { id: "rahmen-3", label: "Rahmen 3-Fach", image: "pics/dreifach.jpg" },
@@ -311,6 +326,7 @@
 
           // Touch Start
           card.addEventListener("touchstart", (e) => {
+            e.preventDefault();
             longPressTriggered = false;
 
             longPressTimer = setTimeout(() => {
@@ -322,6 +338,7 @@
 
           // Touch End
           card.addEventListener("touchend", (e) => {
+            e.preventDefault();
             clearTimeout(longPressTimer);
             if (!longPressTriggered) {
               increment(item.id);
@@ -355,10 +372,14 @@
           });
 
           card.innerHTML = `
-            <img src="${item.image}" alt="${item.label}" class="counter-image" onerror="this.style.display='none'">
+            <img src="${item.image}" alt="${
+            item.label
+          }" class="counter-image" onerror="this.style.display='none'">
             <div class="counter-label">${item.label}</div>
             <div class="counter-display">
-              <div class="counter-value" id="count-${item.id}">${counts[item.id]}</div>
+              <div class="counter-value" id="count-${item.id}">${
+            counts[item.id]
+          }</div>
             </div>
           `;
 
@@ -380,7 +401,9 @@
           }
         });
 
-        document.getElementById("contextMenuOverlay").addEventListener("click", hideContextMenu);
+        document
+          .getElementById("contextMenuOverlay")
+          .addEventListener("click", hideContextMenu);
       }
 
       // Initialisierung
